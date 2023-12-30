@@ -1,7 +1,5 @@
 package model;
 
-import model.Menu;
-
 public class Product extends Menu {
     private double price;
     private int productNumber;

@@ -2,124 +2,106 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import model.Menu;
 import model.Order;
 import model.Product;
 import model.ResisterMenu;
+import view.InputView;
 import view.OutputView;
+import view.SystemMessage;
 
 public class Kiosk {
     private static List<Menu> menuList = new ArrayList<>();
     private static List<Product> productList = new ArrayList<>();
 
-
     public static void kioskStart() {
-        initialize();
-        mainMenuInfo();
+        inputData();
+        showMenuInfo();
     }
 
-    public static void initialize() {
+    public static void inputData() {
+        //메뉴데이터 입력
         ResisterMenu.resisterMenu(menuList);
+        //상품데이터 입력
         ResisterMenu.resisterProduct(productList);
     }
-    public static void mainMenuInfo() {
-        OutputView.mainMenuInfoOutput1(menuList);
-        //메인페이지 사용자 입력받는 부분
-        Scanner sc = new Scanner(System.in);
-        boolean check = false;
-        while(!check) {
-            int input = sc.nextInt();
-            if(input== 1 || input == 2 || input == 3) {
-                check = true;
-                productMenuInfo(input);
-            } else if(input == 4) {
-                check = true;
+
+    public static void showMenuInfo() {
+        //메인 메뉴 페이지 사용자 입력받기
+        int input = InputView.getMenuOrder(menuList);
+        while (true) {
+            if (input == 1 || input == 2 || input == 3) {
+                showProductInfo(input);
+                break;
+            } else if (input == 4) {
                 doOrder();
-            } else if(input == 5) {
-                check = true;
-                //주문최소메서드
-            } else {
-                System.out.println("선택할 수 없는 옵션 메뉴 입니다. 다시 입력해 주세요.");
+                break;
+            } else if (input == 5) {
+                cancelOrder();
+                break;
             }
+            System.out.println(SystemMessage.INVAILD_INPUT);
         }
     }
 
-    public static void productMenuInfo (int menuType) {
-        System.out.println("\"SHAKESHACK BURGER 에 오신걸 환영합니다.\"");
-        System.out.println("아래 상품메뉴판을 보시고 상품을 골라주세요.");
-        System.out.println();
-        System.out.println("[ " + menuType + " MENU ]");
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getMenuType() == menuType) {
-                Product product = productList.get(i);
-                System.out.println(i + 1 + ". " + product.getMenuName() + "   | W " + product.getPrice() + " | "
-                        + product.getMenuExplain());
-            }
-        }
+    public static void showProductInfo(int menuType) {
+        int input = InputView.getProductOrder(menuType, productList);
         //상품페이지 사용자 입력 받는 부분
-        Scanner sc = new Scanner(System.in);
-        boolean check = false;
-        while(!false) {
-            int input = sc.nextInt();
-            for(Product product : productList) {
-                if(input == product.getProductNumber()) {
-                    check = true;
+        while (true) {
+            for (Product product : productList) {
+                if (input == product.getProductNumber() && menuType == product.getMenuType()) {
                     addOrder(product);
+                    break;
                 }
             }
-            System.out.println("존재하지 않는 메뉴입니다. 다시 입력해 주세요.");
+            System.out.println(SystemMessage.INVAILD_INPUT);
         }
     }
 
     public static void addOrder(Product product) {
-        System.out.println("\"" + product.getMenuName() + "   | W " + product.getPrice() + " | "+ product.getMenuExplain());
-        System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
-        System.out.println("1. 확인          2. 취소");
-        boolean check = false;
-        while(!check) {
-            Scanner sc = new Scanner(System.in);
-            int input = sc.nextInt();
-            if(input == 1) {
-                System.out.println(product.getMenuName() + "가 장바구니에 추가되었습니다.");
-                System.out.println();
+        int input = InputView.addOrder(product);
+        while (true) {
+            if (input == 1) {
+                OutputView.successAddOrder(product);
                 Order.addProduct(product);
-                mainMenuInfo();
-            }else if(input == 2) {
-                productMenuInfo(product.getMenuType());
+                showMenuInfo();
+                break;
+            } else if (input == 2) {
+                showProductInfo(product.getMenuType());
+                break;
             }
+            System.out.println(SystemMessage.INVAILD_INPUT);
         }
     }
 
     public static void doOrder() {
-        System.out.println("아래와 같이 주문 하시겠습니까?");
-        System.out.println();
-        Order.getProducts();
-        System.out.println();
-        System.out.println("1. 주문          2. 메뉴판");
-        boolean check = false;
-        while(!check) {
-            Scanner sc = new Scanner(System.in);
-            int input = sc.nextInt();
-            if(input == 1) {
+        int input = InputView.getOrderConfirm();
+        while (true) {
+            if (input == 1) {
                 Order.clearOrder();
-                System.out.println("주문이 완료되었습니다!");
-                System.out.println();
-                System.out.println("대기번호는 [ " +Order.getWaitingNumber() + " ] 번 입니다.");
-                Order.setWaitingNumber(Order.getWaitingNumber()+1);
+                OutputView.successOrder();
+                Order.setWaitingNumber(Order.getWaitingNumber() + 1);
+                showMenuInfo();
+                break;
+            } else if (input == 2) {
+                showMenuInfo();
+                break;
+            }
+        }
+    }
 
-                for(int i=3; i>0; i--) {
-                    System.out.println("("+i+"초후 메뉴판으로 돌아갑니다.)");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println();
-                mainMenuInfo();
-            }else if(input == 2) {
-                mainMenuInfo();
+    public static void cancelOrder() {
+        int input = InputView.getCancelConfirm();
+        boolean check = false;
+        while (!check) {
+            if (input == 1) {
+                Order.clearOrder();
+                showMenuInfo();
+                check = true;
+                showMenuInfo();
+            } else if (input == 2) {
+                showMenuInfo();
+                check = true;
             }
         }
     }

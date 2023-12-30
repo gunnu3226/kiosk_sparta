@@ -1,12 +1,8 @@
 package model;
 
 import java.util.List;
-import model.Menu;
-import model.Product;
 
 public class ResisterMenu {
-
-
 
     public static void resisterMenu(List<Menu> menuList) {
         menuList.add(new Menu("Burger", "비프버거",1));

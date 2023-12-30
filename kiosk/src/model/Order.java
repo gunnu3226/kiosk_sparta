@@ -13,24 +13,15 @@ public class Order {
         products.add(product);
     }
 
-    public static void getProducts() {
-        double sum  = 0;
-        System.out.println("[ Orders ]");
-        for(Product product : products) {
-            System.out.print(product.getMenuName()+"    |");
-            System.out.print(" W "+product.getPrice()+" |");
-            System.out.print(" "+product.getMenuExplain());
-            System.out.println();
-            sum += product.getPrice();
-        }
-        System.out.println();
-        System.out.println("[ Total ]");
-        System.out.println("W "+sum);
+    public static List<Product> getProducts() {
+        return products;
     }
 
     public static void clearOrder() {
         products.clear();
     }
+
+
 
     public static int getWaitingNumber() {
         return waitingNumber;
