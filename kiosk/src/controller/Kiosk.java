@@ -92,16 +92,14 @@ public class Kiosk {
 
     public static void cancelOrder() {
         int input = InputView.getCancelConfirm();
-        boolean check = false;
-        while (!check) {
+        while (true) {
             if (input == 1) {
                 Order.clearOrder();
                 showMenuInfo();
-                check = true;
-                showMenuInfo();
+                break;
             } else if (input == 2) {
                 showMenuInfo();
-                check = true;
+                break;
             }
         }
     }
