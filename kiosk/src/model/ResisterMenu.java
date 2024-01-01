@@ -13,5 +13,7 @@ public class ResisterMenu {
     public static void resisterProduct(List<Product> productList) {
         productList.add(new Product("ShackBurger", "토마토, 양상추, 쉑소스가 토핑된 치즈버거", 6.9, 1,1));
         productList.add(new Product("SmokeBurger", "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거", 8.9, 1,2));
+        productList.add(new Product("Americano", "아메리카노", 5.0, 3,1));
+        productList.add(new Product("Americano", "카페라떼", 5.5, 3,2));
     }
 }

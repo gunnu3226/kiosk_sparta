@@ -26,16 +26,21 @@ public class InputView {
         return sc.nextInt();
     }
 
-    public static int getProductOrder(int menuType, List<Product> productList) {
+    public static int getProductOrder(int menuType, List<Menu> menuList, List<Product> productList) {
         Scanner sc = new Scanner(System.in);
         System.out.println(SystemMessage.WELCOME_MESSAGE);
         System.out.println("아래 상품메뉴판을 보시고 상품을 골라주세요.");
         System.out.println();
+        for(Menu menu : menuList) {
+            if(menu.getMenuType() == menuType) {
+                System.out.println("[ "+menu.getMenuName()+" MENU ]");
+            }
+        }
         System.out.println("[ " + menuType + " MENU ]");
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getMenuType() == menuType) {
                 Product product = productList.get(i);
-                System.out.println(i + 1 + ". " + product.getMenuName() + "   | W " + product.getPrice() + " | "
+                System.out.println(product.getProductNumber() + ". " + product.getMenuName() + "   | W " + product.getPrice() + " | "
                         + product.getMenuExplain());
             }
         }

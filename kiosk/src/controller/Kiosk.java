@@ -13,7 +13,7 @@ import view.SystemMessage;
 public class Kiosk {
     private static List<Menu> menuList = new ArrayList<>();
     private static List<Product> productList = new ArrayList<>();
-
+    
     public static void kioskStart() {
         inputData();
         showMenuInfo();
@@ -30,13 +30,13 @@ public class Kiosk {
         //메인 메뉴 페이지 사용자 입력받기
         int input = InputView.getMenuOrder(menuList);
         while (true) {
-            if (input == 1 || input == 2 || input == 3) {
+            if (1<=input && input <= menuList.size()) {
                 showProductInfo(input);
                 break;
-            } else if (input == 4) {
+            } else if (input == menuList.size() + 1) {
                 doOrder();
                 break;
-            } else if (input == 5) {
+            } else if (input == menuList.size() + 2) {
                 cancelOrder();
                 break;
             }
@@ -45,7 +45,7 @@ public class Kiosk {
     }
 
     public static void showProductInfo(int menuType) {
-        int input = InputView.getProductOrder(menuType, productList);
+        int input = InputView.getProductOrder(menuType, menuList, productList);
         //상품페이지 사용자 입력 받는 부분
         while (true) {
             for (Product product : productList) {
