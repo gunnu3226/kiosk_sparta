@@ -1,6 +1,7 @@
 package view;
 
 import java.util.List;
+import java.util.Map;
 import model.Menu;
 import model.Order;
 import model.Product;
@@ -24,5 +25,25 @@ public class OutputView {
             }
         }
         System.out.println();
+    }
+    public static void viewTotalOrderList(Map<Product, Integer> totoalOrderList, double totalPrice) {
+        String format = "- %-15s | %d개| W %.1f ";
+        System.out.println("[ 총 판매상품 목록 현황 ]");
+        System.out.println("현재까지 총 판매된 상품 목록은 아래와 같습니다.");
+        System.out.println();
+        for(Map.Entry<Product,Integer> map : totoalOrderList.entrySet()) {
+            System.out.printf((format) + "%n" ,map.getKey().getMenuName(),map.getValue(),map.getKey().getPrice());
+        }
+        System.out.println();
+        System.out.println("[ 총 판매금액 현황 ]");
+        System.out.println("현재까지 총 판매된 금액은 [ W"+totalPrice + " ] 입니다.");
+        System.out.println();
+        System.out.println("1. 돌아가기");
+    }
+
+
+
+    public static void invaildInput() {
+        System.out.println(SystemMessage.INVAILD_INPUT);
     }
 }
