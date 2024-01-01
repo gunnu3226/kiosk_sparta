@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import model.Menu;
 import model.Order;
 import model.Product;
@@ -13,7 +15,11 @@ import view.SystemMessage;
 public class Kiosk {
     private static List<Menu> menuList = new ArrayList<>();
     private static List<Product> productList = new ArrayList<>();
-    
+
+    private static Map<Product, Integer> orderList = new HashMap<>();
+
+    private static Order order = new Order(orderList,1);
+
     public static void kioskStart() {
         inputData();
         showMenuInfo();
@@ -63,7 +69,7 @@ public class Kiosk {
         while (true) {
             if (input == 1) {
                 OutputView.successAddOrder(product);
-                Order.addProduct(product);
+                order.addProduct(product);
                 showMenuInfo();
                 break;
             } else if (input == 2) {
@@ -75,12 +81,12 @@ public class Kiosk {
     }
 
     public static void doOrder() {
-        int input = InputView.getOrderConfirm();
+        int input = InputView.getOrderConfirm(order);
         while (true) {
             if (input == 1) {
-                Order.clearOrder();
-                OutputView.successOrder();
-                Order.setWaitingNumber(Order.getWaitingNumber() + 1);
+                order.clearOrder();
+                OutputView.successOrder(order);
+                order.setWaitingNumber(order.getWaitingNumber() + 1);
                 showMenuInfo();
                 break;
             } else if (input == 2) {
@@ -94,7 +100,7 @@ public class Kiosk {
         int input = InputView.getCancelConfirm();
         while (true) {
             if (input == 1) {
-                Order.clearOrder();
+                order.clearOrder();
                 showMenuInfo();
                 break;
             } else if (input == 2) {

@@ -1,6 +1,7 @@
 package view;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import model.Menu;
 import model.Order;
@@ -55,18 +56,20 @@ public class InputView {
         return sc.nextInt();
     }
 
-    public static int getOrderConfirm() {
+    public static int getOrderConfirm(Order order) {
         Scanner sc = new Scanner(System.in);
         double sum  = 0;
         System.out.println("아래와 같이 주문 하시겠습니까?");
         System.out.println();
         System.out.println("[ Orders ]");
-        for(Product product : Order.getProducts()) {
+        for(Map.Entry<Product,Integer> map : order.getProducts().entrySet()) {
+            Product product = map.getKey();
             System.out.print(product.getMenuName()+"    |");
             System.out.print(" W "+product.getPrice()+" |");
+            System.out.print(" "+map.getValue()+" 개 |");
             System.out.print(" "+product.getMenuExplain());
             System.out.println();
-            sum += product.getPrice();
+            sum += product.getPrice() * map.getValue();
         }
         System.out.println();
         System.out.println("[ Total ]");

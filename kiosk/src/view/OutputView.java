@@ -11,10 +11,10 @@ public class OutputView {
         System.out.println(product.getMenuName() + "가 장바구니에 추가되었습니다.");
         System.out.println();
     }
-    public static void successOrder() {
+    public static void successOrder(Order order) {
         System.out.println("주문이 완료되었습니다!");
         System.out.println();
-        System.out.println("대기번호는 [ " + Order.getWaitingNumber() + " ] 번 입니다.");
+        System.out.println("대기번호는 [ " + order.getWaitingNumber() + " ] 번 입니다.");
         for (int i = 3; i > 0; i--) {
             System.out.println("(" + i + "초후 메뉴판으로 돌아갑니다.)");
             try {
