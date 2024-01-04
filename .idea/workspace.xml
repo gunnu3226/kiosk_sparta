@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb21e23-df45-476b-ac56-4fb0284503b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiosk/src/controller/Kiosk.java" beforeDir="false" afterPath="$PROJECT_DIR$/kiosk/src/controller/Kiosk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiosk/src/view/InputView.java" beforeDir="false" afterPath="$PROJECT_DIR$/kiosk/src/view/InputView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiosk/src/view/OutputView.java" beforeDir="false" afterPath="$PROJECT_DIR$/kiosk/src/view/OutputView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1703921288935</updated>
-      <workItem from="1704388881833" duration="2221000" />
+      <workItem from="1704388881833" duration="2529000" />
     </task>
     <servers />
   </component>
