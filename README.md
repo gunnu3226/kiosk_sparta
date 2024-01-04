@@ -41,13 +41,13 @@
 - 메뉴판에는 각 메뉴의 이름과 가격과 간단한 설명이 표시됩니다.
    
   - 햄버거 메뉴판
-    ![스크린샷 2024-01-05 오전 2 30 54](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/919a9377-9b99-4e6d-b680-87b59124aad5)
+    ![스크린샷 2024-01-05 오전 2 30 54](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/919a9377-9b99-4e6d-b680-87b59124aad5)  
   
-  - 스낵 메뉴판
-    ![스크린샷 2024-01-05 오전 2 31 09](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/0c88ae11-675f-4abf-859e-ab0c32d1b944)
+    스낵 메뉴판
+  ![스크린샷 2024-01-05 오전 2 31 09](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/0c88ae11-675f-4abf-859e-ab0c32d1b944)  
   
   - 음료 메뉴판
-    ![스크린샷 2024-01-05 오전 2 31 22](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/84714621-c6ea-4b3e-95e5-bdace5833754)
+    ![스크린샷 2024-01-05 오전 2 31 22](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/84714621-c6ea-4b3e-95e5-bdace5833754)  
 
 
 ## 3. 상품 옵션 기능(선택)
