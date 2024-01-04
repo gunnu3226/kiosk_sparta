@@ -131,6 +131,7 @@ public class Kiosk {
             switch (input) {
                 case 1:
                     order.clearOrder();
+                    OutputView.showOrderCancle();
                     showMenuInfo();
                     break;
                 case 2:

@@ -9,32 +9,32 @@ import model.Product;
 public class OutputView {
 
     public static void showMenuOrder(List<Menu> menuList) {
-        String format = "- %d %-15s | %s";
-        System.out.println("\" Mcdonald's 에 오신걸 환영합니다.\"");
-        System.out.println("아래 메뉴판을 보시고 메뉴를 골라주세요.");
+        String format = " %d. %-15s | %s";
         System.out.println();
-        System.out.println("[ Mcdonald's MENU ]");
+        System.out.println("\" 건우의 Mcdonald's 에 오신걸 환영합니다.\"");
+        System.out.println("  아래 메뉴판을 보시고 메뉴를 골라주세요.");
+        System.out.println();
+        System.out.println("      [Mcdonald's MENU ]");
         for(int i=0; i<menuList.size(); i++) {
             Menu menu = menuList.get(i);
             System.out.printf((format)+"%n",i+1, menu.getMenuName() , menu.getMenuExplain());
         }
         System.out.println();
-        System.out.println("[ ORDER MENU ]");
+        System.out.println("       [ ORDER MENU ]");
         System.out.printf((format)+"%n",menuList.size() + 1 ,"Order", "장바구니를 확인 후 주문합니다.");
         System.out.printf((format)+"%n",menuList.size() + 2 ,"Cancel", "진행중인 주문을 취소합니다.");
     }
 
     public static void showProductOrder(int menuType, List<Menu> menuList, List<Product> productList) {
         String format = "%d. %-20s | W %.1f | %s";
-        System.out.println("\" Mcdonald's 에 오신걸 환영합니다.\"");
-        System.out.println("아래 상품메뉴판을 보시고 상품을 골라주세요.");
+        System.out.println("\" 건우의 Mcdonald's 에 오신걸 환영합니다.\"");
+        System.out.println("  아래 상품메뉴판을 보시고 상품을 골라주세요.");
         System.out.println();
         for(Menu menu : menuList) {
             if(menu.getMenuType() == menuType) {
-                System.out.println("[ "+menu.getMenuName()+" MENU ]");
+                System.out.println("             [ "+menu.getMenuName()+" MENU ]");
             }
         }
-        System.out.println("[ " + menuType + " MENU ]");
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getMenuType() == menuType) {
                 Product product = productList.get(i);
@@ -50,7 +50,7 @@ public class OutputView {
     }
 
     public static void showUserOption(Product product) {
-        String format = "- %-15s | W %.1f | %s";
+        String format = " %-15s | W %.1f | %s";
         System.out.printf((format) + "%n",product.getMenuName(),product.getPrice(), product.getMenuExplain());
         System.out.println("위 메뉴의 어떤 옵션으로 추가하시겠습니까?");
         int optionIndex = 1;
@@ -118,6 +118,18 @@ public class OutputView {
         System.out.println();
         System.out.println("**************관리자 모드**************");
         System.out.println("1. 돌아가기");
+    }
+
+    public static void showOrderCancle() {
+        System.out.println("주문이 취소 되었습니다.");
+        for (int i = 3; i > 0; i--) {
+            System.out.println("(" + i + "초후 메뉴판으로 돌아갑니다.)");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void invaildInput() {

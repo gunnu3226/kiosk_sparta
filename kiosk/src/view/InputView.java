@@ -12,6 +12,7 @@ public class InputView {
     static Scanner sc = new Scanner(System.in);
 
     public static int getUserInput() {
+        System.out.println("원하는 번호를 입력해 주세요.");
         return sc.nextInt();
     }
 
