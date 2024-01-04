@@ -40,9 +40,10 @@ public class Kiosk {
     }
 
     public void showMenuInfo() {
+        OutputView.showMenuOrder(menuList);
         //메인 메뉴 페이지 사용자 입력받기
-        int input = InputView.showMenuOrder(menuList);
         while (true) {
+            int input = InputView.getUserInput();
             if (1<=input && input <= menuList.size()) {
                 showProductInfo(input);
                 break;
@@ -60,12 +61,13 @@ public class Kiosk {
     }
 
     public void showProductInfo(int menuType) {
-        int input = InputView.getProductOrder(menuType, menuList, productList);
+        OutputView.showProductOrder(menuType, menuList, productList);
         //상품페이지 사용자 입력 받는 부분
         while (true) {
+            int input = InputView.getUserInput();
             for (Product product : productList) {
                 if (input == product.getProductNumber() && menuType == product.getMenuType()) {
-                    addOrder(product);
+                    chooseOption(product);
                     break;
                 }
             }
@@ -73,25 +75,36 @@ public class Kiosk {
         }
     }
 
-    public void addOrder(Product product) {
-        int input = InputView.addOrder(product);
+    public void chooseOption(Product product) {
+        OutputView.showUserOption(product);
+        int cntOption = 1;
+
         while (true) {
-            if (input == 1) {
-                OutputView.successAddOrder(product);
+            int input = InputView.getUserInput();
+            if(input == 1) {
                 order.addProduct(product);
                 showMenuInfo();
                 break;
-            } else if (input == 2) {
-                showProductInfo(product.getMenuType());
+            } else if(1<input && input <= product.getOptions().size()) {
+                for (Map.Entry<String,Double> option : product.getOptions().entrySet()) {
+                    if(cntOption == input) {
+                        order.addProduct(new Product(product.getMenuName()+"("+option.getKey()+")",product.getMenuExplain(),product.getMenuType(),product.getPrice()+option.getValue()));
+                        showMenuInfo();
+                        break;
+                    }
+                    cntOption++;
+                }
+            } else {
+                OutputView.invaildInput();
                 break;
             }
-            OutputView.invaildInput();
         }
     }
 
     public void doOrder() {
-        int input = InputView.getOrderConfirm(order);
+        OutputView.showTotalOrder(order);
         while (true) {
+            int input = InputView.getUserInput();
             if (input == 1) {
                 for(Map.Entry<Product, Integer> map : order.getProducts().entrySet()) {
                     totalOrderList.put(map.getKey(), map.getValue());
@@ -112,24 +125,27 @@ public class Kiosk {
     }
 
     public void cancelOrder() {
-        int input = InputView.getCancelConfirm();
+        OutputView.cancelConfirm();
         while (true) {
-            if (input == 1) {
-                order.clearOrder();
-                showMenuInfo();
-                break;
-            } else if (input == 2) {
-                showMenuInfo();
-                break;
+            int input = InputView.getUserInput();
+            switch (input) {
+                case 1:
+                    order.clearOrder();
+                    showMenuInfo();
+                    break;
+                case 2:
+                    showMenuInfo();
+                    break;
+                default:
+                    OutputView.invaildInput();
             }
-            OutputView.invaildInput();
         }
     }
 
     public void viewTotalPriceAndOrderList() {
         OutputView.viewTotalOrderList(totalOrderList, totalPrice);
-        int input = InputView.getUserInput();
         while(true) {
+            int input = InputView.getUserInput();
             if(input == 1) {
                 showMenuInfo();
                 break;

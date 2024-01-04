@@ -1,11 +1,14 @@
 package model;
 
 import java.util.List;
+import java.util.Map;
 
 public class Menu {
+
     private String menuName;
     private String menuExplain;
     private int menuType;
+
 
     public Menu(String menuName, String menuExplain, int menuType) {
         this.menuName = menuName;
@@ -23,9 +26,5 @@ public class Menu {
 
     public int getMenuType() {
         return menuType;
-    }
-
-    public String getMenuNameByMenuType() {
-        return this.menuName;
     }
 }
