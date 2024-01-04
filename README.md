@@ -40,26 +40,29 @@
 - 상품 메뉴 선택 시 해당 카테고리의 메뉴판이 출력됩니다.
 - 메뉴판에는 각 메뉴의 이름과 가격과 간단한 설명이 표시됩니다.
    
-  - 햄버거 메뉴판
-  - ![스크린샷 2024-01-05 오전 2 30 54](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/919a9377-9b99-4e6d-b680-87b59124aad5)  
+  - 햄버거 메뉴판<br>
   
-  - 스낵 메뉴판
-  - ![스크린샷 2024-01-05 오전 2 31 09](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/0c88ae11-675f-4abf-859e-ab0c32d1b944)  
+    ![스크린샷 2024-01-05 오전 2 30 54](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/919a9377-9b99-4e6d-b680-87b59124aad5)  
   
-  - 음료 메뉴판
-  - ![스크린샷 2024-01-05 오전 2 31 22](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/84714621-c6ea-4b3e-95e5-bdace5833754)  
+  - 스낵 메뉴판<br>
+     
+     ![스크린샷 2024-01-05 오전 2 31 09](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/0c88ae11-675f-4abf-859e-ab0c32d1b944)  
+  
+  - 음료 메뉴판<br>
+  
+      ![스크린샷 2024-01-05 오전 2 31 22](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/84714621-c6ea-4b3e-95e5-bdace5833754)  
 
 
 ## 3. 상품 옵션 기능(선택)
 - 상품에 옵션을 선택 후 장바구니에 추가 할 수 있게 세분화 합니다.
-  - 햄버거 옵션
-    ![스크린샷 2024-01-05 오전 2 38 28](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/29ba7cf5-d320-48ee-921c-6fd80ab4e0b9)
+  - 햄버거 옵션<br>
+    ![스크린샷 2024-01-05 오전 2 38 28](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/29ba7cf5-d320-48ee-921c-6fd80ab4e0b9)  
   
-  - 스낵 옵션
-    ![스크린샷 2024-01-05 오전 2 38 52](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/dafc5bc7-17fc-4d69-b3a6-bf4b62860f2f)
+  - 스낵 옵션<br>
+    ![스크린샷 2024-01-05 오전 2 38 52](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/dafc5bc7-17fc-4d69-b3a6-bf4b62860f2f)  
   
-  - 음료 옵션
-    ![스크린샷 2024-01-05 오전 2 39 08](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/252ed37f-9baa-459d-9b6d-3e18d852914a)
+  - 음료 옵션<br>
+    ![스크린샷 2024-01-05 오전 2 39 08](https://github.com/gunnu3226/kiosk_sparta/assets/139452702/252ed37f-9baa-459d-9b6d-3e18d852914a)  
 
 ## 4. 중복 상품 개수 체크 기능(선택)
 - 주문 페이지에 들어가면 중복 상품의 개수도 표기되고 옵션에 따라 다른 상품으로 분류된다.
